@@ -2,7 +2,7 @@
 
 git clone me. Login to AWS. Install npm/cdk/etc.
 ```
-cd lambda-experiment/aws
+cd lambda-experiment
 npm i
 cdk deploy
 ```
