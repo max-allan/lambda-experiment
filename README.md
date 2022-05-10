@@ -1,14 +1,18 @@
-# Welcome to your CDK TypeScript project!
+# Lambda parent/child invoke
 
-This is a blank project for TypeScript development with CDK.
+git clone me. Login to AWS. Install npm/cdk/etc.
+```
+cd lambda-experiment/aws
+npm i
+cdk deploy
+```
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+Wait for it. Go to the Lambda console and do a test run on the parent. Any event is OK, it doesn't use the event.
 
-## Useful commands
+The first parent run will never start a child. (if you wait 5+ minutes)
 
- * `npm run build`   compile typescript to js
- * `npm run watch`   watch for changes and compile
- * `npm run test`    perform the jest unit tests
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
+If you then run parent several times, you should see after about 4/5th run, some response from the child, like :
+```
+  Payload: '"Child received {\\"request\\":\\"5ed477cd-4949-4c22-b5e6-fd627389c648\\",\\"startTime\\":\\"1652198802884\\"} 46457msec ago"'
+```
+
